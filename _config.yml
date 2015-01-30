@@ -1,19 +1,26 @@
+# Dependencies
+markdown:            redcarpet
+highlighter:         pygments
+
 # Permalinks
-permalink:        pretty
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
 relative_permalinks: true
 
 # Setup
-title:            Poole
-tagline:          The Jekyll Butler
-url:              http://getpoole.com
-paginate:         1
-baseurl:          /
+title:               will chan's random blog
+# tagline:             'A Jekyll theme'
+description:         I'm a software engineer working at <a href="http://www.paxata.com/">Paxata</a>. I write about random things here.
+url:              http://http://williamchan.github.io/
+baseurl:             /
+paginate:            5
+
+# About/contact
 author:
-  name:           Mark Otto
-  url:            https://twitter.com/mdo
-  email:          markdotto@gmail.com
+  name:           Will Chan
+  # url:            https://twitter.com/mdo
+  # email:          markdotto@gmail.com
 
 # Custom vars
-version:          1.0.0
-github:
-  repo:           https://github.com/poole/poole
+version:             1.0.0
