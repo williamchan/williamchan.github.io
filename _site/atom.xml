@@ -4,7 +4,7 @@
  <title>will chan's random blog</title>
  <link href="http://http://williamchan.github.io//atom.xml" rel="self"/>
  <link href="http://http://williamchan.github.io//"/>
- <updated>2015-01-30T00:44:05-08:00</updated>
+ <updated>2015-06-17T01:17:32-07:00</updated>
  <id>http://http://williamchan.github.io/</id>
  <author>
    <name>Will Chan</name>
@@ -13,132 +13,69 @@
 
  
  <entry>
-   <title>Example content</title>
-   <link href="http://http://williamchan.github.io//2014/01/01/example-content/"/>
-   <updated>2014-01-01T00:00:00-08:00</updated>
-   <id>http://http://williamchan.github.io//2014/01/01/example-content</id>
-   <content type="html">&lt;div class=&quot;message&quot;&gt;
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
-&lt;/div&gt;
+   <title>Elon Musk biography - on aggressive learning and a fantastic future</title>
+   <link href="http://http://williamchan.github.io//2015/06/16/elon-musk-biography/"/>
+   <updated>2015-06-16T00:00:00-07:00</updated>
+   <id>http://http://williamchan.github.io//2015/06/16/elon-musk-biography</id>
+   <content type="html">&lt;p&gt;What can I say, call me a Musk fanboy.&lt;/p&gt;
 
-&lt;p&gt;Cum sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt;
+&lt;p&gt;I just read &lt;a href=&quot;http://www.amazon.com/Elon-Musk-SpaceX-Fantastic-Future/dp/0062301233&quot;&gt;&lt;em&gt;Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future&lt;/em&gt;&lt;/a&gt;. What an inspirational book! It has taught me several lessons about the business of technology while provoking much self-reflection.&lt;/p&gt;
+
+&lt;h2&gt;Time to hit the books&lt;/h2&gt;
+
+&lt;p&gt;Early in the book, Elon is quoted as saying &amp;quot;I think there are probably too many smart people pursuing Internet stuff, finance, and law.&amp;quot; &lt;/p&gt;
+
+&lt;p&gt;This made me &lt;em&gt;gulp&lt;/em&gt;. A decade ago, I turned my back on finance and law so that I could be a productive web programming member of society. The idea that &amp;quot;Internet stuff&amp;quot; can be grouped together with finance and law in societal value made me think about my place in the world. He hit me again toward the end of the book.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
+&lt;p&gt;&amp;quot;You should have a pretty broad engineering and scientific background.... Engineers are usually trained in a very fixed area. When you&amp;#39;re able to think about all of these disciplines together, you kind of think differently and can dream of much crazier things and how they might work.&amp;quot;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;
+&lt;p&gt;My strengths include progamming, math, and finance. The confidence I had drawn from these areas of expertise melted away. Truth be told, I had already began making plans to update my skills in preparation for the next wave of innovation. (Coursera is amazing.) The writing is on the walls: the days of easy innovation in cloud-based software are nearing an end. Meanwhile, the barrier to entry for web and mobile programming nowadays is essentially nil.&lt;/p&gt;
 
-&lt;h2&gt;Inline HTML elements&lt;/h2&gt;
+&lt;p&gt;Reading Musk caution against having &amp;quot;fixed area&amp;quot; engineering backgrounds has abruptly moved up my self-learning timeline.&lt;/p&gt;
 
-&lt;p&gt;HTML defines a long list of available inline tags, a complete list of which can be found on the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element&quot;&gt;Mozilla Developer Network&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I find it inspiring to remember that Musk post-PayPal had essentially the same technical skillset that I do now: web software. He learned about rocket science, battery engineering, solar panels, and car manufacturing by reading and talking to people.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;To bold text&lt;/strong&gt;, use &lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;To italicize text&lt;/em&gt;, use &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Abbreviations, like &lt;abbr title=&quot;HyperText Markup Langage&quot;&gt;HTML&lt;/abbr&gt; should use &lt;code&gt;&amp;lt;abbr&amp;gt;&lt;/code&gt;, with an optional &lt;code&gt;title&lt;/code&gt; attribute for the full phrase.&lt;/li&gt;
-&lt;li&gt;Citations, like &lt;cite&gt;&amp;mdash; Mark otto&lt;/cite&gt;, should use &lt;code&gt;&amp;lt;cite&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;Deleted&lt;/del&gt; text should use &lt;code&gt;&amp;lt;del&amp;gt;&lt;/code&gt; and &lt;ins&gt;inserted&lt;/ins&gt; text should use &lt;code&gt;&amp;lt;ins&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Superscript &lt;sup&gt;text&lt;/sup&gt; uses &lt;code&gt;&amp;lt;sup&amp;gt;&lt;/code&gt; and subscript &lt;sub&gt;text&lt;/sub&gt; uses &lt;code&gt;&amp;lt;sub&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;I have ordered several textbooks in adjacent disciplines such as robotics, machine learning, and physics. It&amp;#39;s time to double-down on training up.&lt;/p&gt;
 
-&lt;p&gt;Most of these elements are styled by browsers with few modifications on our part.&lt;/p&gt;
+&lt;h2&gt;On engineering risk-taking&lt;/h2&gt;
 
-&lt;h2&gt;Heading&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;quot;SpaceX had been making significant changes to its rocket since the last, failed launch. A traditional aerospace company would not have wanted the added risk, but Musk insisted that SpaceX push its technology forward while at the same time trying to make it work right.&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&lt;/p&gt;
+&lt;p&gt;Replace &amp;quot;traditional aerospace company&amp;quot; with &amp;quot;career software engineers&amp;quot; and you essentially have described the kind of well-intentioned, &amp;quot;senior&amp;quot; programmer that much of the industry produces.&lt;/p&gt;
 
-&lt;h3&gt;Code&lt;/h3&gt;
+&lt;p&gt;My blood must still be running hot because I feel like it&amp;#39;s time to take the gloves off and take some bold engineering risks.&lt;/p&gt;
 
-&lt;p&gt;Cum sociis natoque penatibus et magnis dis &lt;code&gt;code element&lt;/code&gt; montes, nascetur ridiculus mus.&lt;/p&gt;
+&lt;h2&gt;On SpaceX culture breaking the corporate mold&lt;/h2&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Example can be run directly in your JavaScript console&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;quot;Make sure your output is high,&amp;quot; [SpaceX president Gwynne] Shotwell said. &amp;quot;If we&amp;#39;re throwing a bunch of shit in your way, you need to be mouthy about it. That&amp;#39;s not a quality that&amp;#39;s widely accepted elsewhere, but it is at SpaceX.&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;span class=&quot;c1&quot;&gt;// Create a function that takes two arguments and returns the sum of those arguments&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;return a + b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;p&gt;Definitely does not sound like my father&amp;#39;s Rocketdyne/Boeing/UTX!&lt;/p&gt;
 
-&lt;span class=&quot;c1&quot;&gt;// Call the function&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// &amp;gt; 8&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;On SolarCity&amp;#39;s gameplan&lt;/h2&gt;
 
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.&lt;/p&gt;
+&lt;p&gt;I distinctly remember two things about solar panels in the last decade: that they were difficult to install and that their prices kept dropping. It was against this backdrop that SolarCity executed its business plan: &lt;/p&gt;
 
-&lt;h3&gt;Lists&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;quot;At the time, it was not easy for consumers to get solar panels on their houses. You had to be very proactive, acquiring the panels and finding someone else to install them. The consumer paid up front and had to make an educated guess as to whether or not his or her house even got enough sunshine to make the ordeal worthwhile. On top of all this people were reluctant to buy panels, knowing that the next year&amp;#39;s models would be more efficient.&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.&lt;/p&gt;
+&lt;p&gt;Once it has been pointed out, how obvious it seems that homeowners do not want to invest in rapidly changing solar panel technology, and that a business innovation could make such concerns disappear.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et.&lt;/li&gt;
-&lt;li&gt;Donec id elit non mi porta gravida at eget metus.&lt;/li&gt;
-&lt;li&gt;Nulla vitae elit libero, a pharetra augue.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2&gt;On the brilliance of the Gigafactory&lt;/h2&gt;
 
-&lt;p&gt;Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.&lt;/p&gt;
+&lt;p&gt;(The Gigafactory is Tesla&amp;#39;s lithium-ion battery factory.)&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Vestibulum id ligula porta felis euismod semper.&lt;/li&gt;
-&lt;li&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.&lt;/li&gt;
-&lt;li&gt;Maecenas sed diam eget risus varius blandit sit amet non magna.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;quot;The competitors... think it&amp;#39;s a stupid idea, that the battery supplier should just go build something like that. But I know the idea of spending several billion dollars on a battery factory. You&amp;#39;ve got a chicken-and-egg problem where the car companies are not going to commit to a giant volume because they&amp;#39;re not sure you can sell enough electric cars.&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;HyperText Markup Language (HTML)&lt;/dt&gt;
-  &lt;dd&gt;The language used to describe and define the content of a Web page&lt;/dd&gt;
-
-  &lt;dt&gt;Cascading Style Sheets (CSS)&lt;/dt&gt;
-  &lt;dd&gt;Used to describe the appearance of Web content&lt;/dd&gt;
-
-  &lt;dt&gt;JavaScript (JS)&lt;/dt&gt;
-  &lt;dd&gt;The programming language used to build advanced Web sites and applications&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
-
-&lt;h3&gt;Tables&lt;/h3&gt;
-
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Upvotes&lt;/th&gt;
-      &lt;th&gt;Downvotes&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tfoot&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Totals&lt;/td&gt;
-      &lt;td&gt;21&lt;/td&gt;
-      &lt;td&gt;23&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tfoot&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Alice&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;11&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Bob&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Charlie&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;Want to see something else added? &lt;a href=&quot;https://github.com/poole/poole/issues/new&quot;&gt;Open an issue.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Of course, no other car company is making anywhere near the kinds of investments in battery production. It will be amusing to watch from afar how things play out for those competitors.&lt;/p&gt;
 </content>
  </entry>
  
