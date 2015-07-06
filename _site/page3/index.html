@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      will chan's random blog &middot; 
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="layout-reverse">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>I'm a software engineer working at <a href="http://www.paxata.com/">Paxata</a>. I write about random things here.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2015. All rights reserved.
+    </p>
+  </div>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59151560-1', 'williamchan.github.io');
+  ga('send', 'pageview');
+
+</script>
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">will chan's random blog</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2013/03/01/learning-https-requests/">
+        Learning like a 5yo about https requests
+      </a>
+    </h1>
+
+    <span class="post-date">01 Mar 2013</span>
+
+    <p>Because we value the security of our customers’ and celebrities’ data, we decided early on that both outbound and inbound requests would be served over SSL.</p>
+
+<p>To configure SSL for a site, your DNS and web hosting vendors likely have clear instructions to follow. As for connecting to third-party services via HTTPS, I often felt incredulous that I didn’t come across any good and comprehensive guides online when I was figuring this stuff out, which is a bit weird since this must be a common task for many online companies. Like much of my recently acquired tech ops knowledge, I feel like each nugget of learning was hard-won, and I wish to share what I know here.</p>
+
+<p>To make requests via HTTPS, your app needs a <strong>truststore</strong> that contains <strong>certificates</strong> from the parties that you expect to communicate with or from Certificate Authorities that you trust to identify other parties. There is also another concept called a keystore that contains private keys supposedly for implementing server-side SSL. Now, already things can get confusing. I got those definitions from <a href="http://stackoverflow.com/questions/318441/truststore-and-keystore-definitions">this stackoverflow discussion that says that truststore and keystore are different concepts</a>, and yet it really seems that truststore and keystore are used interchangeably. I’ve come to the conclusion to not allow this ambiguity to ruin my life.</p>
+
+<h2>Download certificates</h2>
+
+<p>The first step is to download certificates from the sites and services with which your server will communicate via HTTPS. For example, visit <a href="https://api.stripe.com">https://api.stripe.com</a> using Chrome, click the lock icon in the browser bar, and look for “Certificate Information.” You should see a certificate tree that looks something like:</p>
+
+<p><img src="/assets/certificate-tree-example.jpg"/> </p>
+
+<p>Each of those is a certificate with its own expiration date. Root-level certificates usually have expiration dates farthest in the future, whereas leaf certificates expire more frequently.</p>
+
+<p>I recommend downloading all of the available certificates so that they can be imported into the keystore. You don’t want to have your app’s communication with crucial services broken without warning because a leaf certificate expired or was replaced. Ahem, yes, I learned that by experience.</p>
+
+<h2>Import certificates into truststore</h2>
+
+<p>In a Scala/Java environment, the javax.net.ssl.trustStore system property will need to point to a keystore that includes the certificates of trusted third-party sites. (See? Very interchangeable.)</p>
+
+<p>To prepare the truststore, you can run a command that looks like:</p>
+
+<blockquote>
+<p>keytool -import -alias stripe.com -file api.stripe.com.cer -keystore keystore</p>
+</blockquote>
+
+<p>Do this on each certificate you want to import. There are plenty of <a href="http://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html">resources out there on keytool commands</a>.</p>
+
+<p>Then fire up your app and you should be to communicate securely with APIs all over the interwebs!</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2013/02/28/ipad-app-distribution-for-the-stars/">
+        iPad app distribution for the stars
+      </a>
+    </h1>
+
+    <span class="post-date">28 Feb 2013</span>
+
+    <p>Celebrities on Egraphs use a <a href="https://www.youtube.com/watch?v=BfU_cE6HxDw">special iPad app to connect with their fans</a>. We didn’t want to put this app on the Apple app store because it is not meant for general usage, and also because we wanted to distribute upgrades without going through Apple. For us, security is crucial because much of the value of an egraph is its authenticity.</p>
+
+<p>The recipe is actually quite simple.</p>
+
+<p>Step 1 is initial distribution via email: To get the initial app to the iPad, we send an email to the celebrity with a link that installs the the initial version using the itms-services protocol.</p>
+
+<p>Step 2 is to install the actual app via authenticated requests: When the celebrity logs into the initial app with a pre-provisioned account and password, that kicks off the process to download the actual app. The iPad makes a request to an egraphs.com server to get the locations of the .plist and .ipa files of the latest Egraphs iPad app. The .ipa lives privately on Amazon’s S3 and is only accessible through a <a href="http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html">short-lived authenticated REST request generated by the server</a>.</p>
+
+<p>Step 3 is to enable easy app upgrades: To distribute updates of the Egraphs ipad app, we just update the .ipa URL on our servers. The next time a celebrity user logs into he iPad app, step 2 will kick off again and encourage the celebrity to allow the upgrade.</p>
+
+<p>The problem of controlling distribution to iPad apps actually reminds me of what enterprises do with custom Box apps (I used to work at Box). I like to describe our iPad app distribution system as an enterprise-grade solution for your favorite celebrities.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2013/02/26/on-starting-up-in-seattle/">
+        On starting up in Seattle
+      </a>
+    </h1>
+
+    <span class="post-date">26 Feb 2013</span>
+
+    <p>I’ve been living in Seattle for a year and a half now. Does that qualify me to talk about the Seattle startup scene? Let’s find out together.</p>
+
+<p>Four of the five cofounders moved from the SF Bay Area to start Egraphs in a Seattle house, where I learned that the Central District is cheap and has <a href="http://www.yelp.com/search?find_desc=ethiopian+restaurant&amp;find_loc=Seattle%2C+WA&amp;ns=1#find_loc=Central+District,+Seattle,+WA&amp;l=p:WA:Seattle::%5BCentral_District,Madrona/Leschi%5D">great Ethiopian food</a>. It may seem strange that we left San Francisco and Palo Alto to start a company, and around the same time my former CEO even <a href="http://www.geekwire.com/2011/leave-seattle-build-boxnet/">wrote about how he had to leave Seattle to get started in 2005</a>. But Seattle was a new city for us and a new adventure, and it has worked out pretty well.</p>
+
+<p>For one, it is way cheaper to run a business in Seattle. We have very roughly estimated that it would have cost twice as much to operate in San Francisco due to higher business expenses and taxes and rents and salaries. For example, we now have an office in <a href="http://www.geekwire.com/2013/pioneer-square-tech-map-techies-hanging-shingles/">Pioneer Square, which has a high concentration of startups</a>, and the rent we pay would get us an office one-fourth the size in Palo Alto. For comparing other expenses, just plug in higher numbers across the board for operating in SF. We have essentially been able to run lean since we started.</p>
+
+<p>When I started checking out the local tech scene, I was pleasantly surprised to find a thriving startup community. The monthly <a href="http://www.meetup.com/HackerNewsSeattleMeetup/">Seattle Hacker News meetup</a> is regularly attended by 100+ industry folks, and many of them run their own startups. I remember chatting in a circle of attendees and finding that every person in that group was running something. Predictably, none of them were interested in joining Egraphs, and also predictably many of them had previous experience at Microsoft and Amazon. At other events, I was thankful to find people to give me a crash course on AWS topics. The scene is not quite as bustling as the Bay Area, where you can completely book your schedule with industry shindigs if you really wanted to, but you can definitely find startup types to socialize with in Seattle.</p>
+
+<p>With respect to engineering recruiting, we have had good fortune to find some awesome engineers to join our team. We didn’t find any of them through the traditional avenues of online job postings (though I did learn that Resumator is a cinch to use), nor did we find them through meetups or campus recruiting. We met them in informal social settings, and one we met through a study group we hosted for Martin Odersky’s coursera class on Scala. The beautiful thing about startup recruiting in Seattle is the deep reserve of engineering talent quietly languishing at Microsoft and Amazon, waiting for a greater purpose. But they’re probably not exploring the startup scene, so you need to do the legwork to connect with them on a meaningful level. If I needed to recruit more engineers right now, I would get a rock climbing membership and socialize regularly at <a href="http://seattle.beerandcode.org/">Beer and Code</a> and host house parties to extend my social circle. And then pitch them on the cool stuff we’re working on.</p>
+
+<p>It certainly would have been a different experience starting in the Bay Area versus Seattle, but I’ll shy away from saying which is better. Between two workable environments, it really isn’t meaningful to make statements like “City A is better than City B” anyway. Starting in Seattle is definitely possible, and moreover this town has been good to us. Beyond that, location is mostly a matter of personal preferences.</p>
+
+<p>As a postscript, I will say that I was completely caught off guard by winter blues. Again, personal preferences.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2013/02/26/geometers-in-the-time-of-euclid/">
+        Like geometers in the time of Euclid
+      </a>
+    </h1>
+
+    <span class="post-date">26 Feb 2013</span>
+
+    <p>I just came across this video of my computer science lecturer.</p>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/nWRGPxSNnag" frameborder="0" allowfullscreen></iframe>
+
+<p>“You are like geometers and you’re living in the time of Euclid.”</p>
+
+<p>He said the same thing to conclude the final lecture when I took this class in winter 2005, and the big picture of why we study this stuff just clicked for me. I do believe that Mehran Sahami has influenced <em>generations</em> of Stanford students.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2013/02/26/free-obamacare-startup-idea/">
+        Free ObamaCare startup idea
+      </a>
+    </h1>
+
+    <span class="post-date">26 Feb 2013</span>
+
+    <p>The way to think of startup ideas is not to think of startup ideas but rather to look for problems. <a href="http://www.paulgraham.com/startupideas.html">So says Paul Graham</a>. If you can provide a focused solution to a high-pain problem shared by many, then you have yourself a business.</p>
+
+<p>For example, <a href="https://stripe.com/">Stripe</a> does that for the many websites that want to accept credit card payments without the hassle of merchant accounts or PCI compliance. <a href="https://papertrailapp.com/">Papertrail</a> does that for sites who want to be able to make sense of application server log statements and exceptions. <a href="https://try.crashlytics.com/">Crashlytics</a> filled a critical need for mobile developers who otherwise had limited view of how their apps fared in the hands of actual users.</p>
+
+<p>A friend of mine was reading a book called <a href="http://www.amazon.com/ObamaCare-Survival-Guide-Nick-Tate/dp/0893348627">ObamaCare Survival Guide</a> and had all but given up trying to understand ObamaCare compliance. The trouble is that there are lots of small businesses out there who don’t have that luxury. Think restaurants. Think small contracting firms. The owners of these companies are busy people who now have many new rules to follow, and those rules are complex and differ state-to-state and sometimes by city (eg San Francisco’s Health Care Security Ordinance). Oh yeah, and expect that those rules will be changed by Congress at some point.</p>
+
+<p>So, create a service that handles everything small businesses need to comply with employee healthcare laws. As a user, I would want to be able to enter in my business address and info about my employees, and this service would take care of the rest down to recordkeeping and sending payments and forms where they need to go.</p>
+
+<p>This one’s for free, along with the zero hard research that’s gone into it. In fact, from now on, whenever you hear about a survival guide for anything, <a href="http://www.amazon.com/Zombie-Survival-Guide-Complete-Protection/dp/1400049628">just assume that there is a business idea</a>.</p>
+
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a class="pagination-item older" href="/page4">Older</a>
+  
+  
+    
+      <a class="pagination-item newer" href="/page2">Newer</a>
+    
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

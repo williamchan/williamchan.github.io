@@ -11,7 +11,7 @@
 
   <title>
     
-      Mongo+Kerberos -- documentation matters &middot; will chan's random blog
+      The brave world of video encoding &middot; will chan's random blog
     
   </title>
 
@@ -111,23 +111,23 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Mongo+Kerberos -- documentation matters</h1>
-  <span class="post-date">20 Apr 2015</span>
-  <p>By far the most painful work project of this year has been connecting the Paxata application to a Kerberos-protected Mongo database. I have come to the conclusion that if Kerberos is involved, then prepare for suffering.</p>
+  <h1 class="post-title">The brave world of video encoding</h1>
+  <span class="post-date">25 Feb 2013</span>
+  <p>One of my recent projects was to build the new egraph page. As explained in a company blog post, the new format delivers the egraph’s audio and image together as a video, versus as separate image and audio assets.</p>
 
-<p>I wish that the moral of this story was that I never give up on a technical challenge, but really I was saved by the patience of some really awesome people at Mongo. </p>
+<p>Much of the motivation for this exploration was that we figured out that many people who viewed egraphs completely missed that there is an audio experience. By presenting the egraph as a video with a BAPB (big ass play button), we hope that it is obvious to egraph viewers that there is something to experience by hitting the play button. Hear your star speak directly to you omgz.</p>
 
-<p><a href="https://en.wikipedia.org/wiki/Kerberos_(protocol)">Kerberos</a> is an authentication protocol that uses private keys, aka shared secrets, to secure computing resources and services. Shared secrets are really great for securing things, but in many cases, securely distributing those secrets is a showstopper because of the risk that those secrets are unsecurely transmitted. In a Kerberos environment, a trusted administrator configures those shared secrets within a closed computer network. (Think VP of IT at a large corporation.)</p>
+<p>Enter the brave world of video encoding. As this as my first foray into that world, I was in for a crash source. For starters, there are currently three major codecs. As <a href="http://diveintohtml5.info/video.html">Dive Into Html 5</a> recommends for maximum compatibility, a website should provide a video in all three formats as well as a flash fallback. So much for hoping that video would be a limited scope problem.</p>
 
-<p>My devops coworker and I started work on this project by setting up a Mongo Enterprise server with a Kerberos client. Then the headwalling began as we tried unsuccessfully to connect to Kerberos-enabled Mongo from a command line. For 2-3 weeks, we double-checked the available documentation, puzzled over cryptic error messages, and exhaustively tested hypotheses. It wore me out to the point that I focused on other projects at work for a while.</p>
+<p>And secondly, even combining a single image with an audio track turned out to be more difficult than I initially anticipated. Major open-source video libraries like FFmpeg run on native code, and all of my encoding attempts involved using a Java library called Xuggle, which wraps FFmpeg. I found Xuggle to be extremely finicky, and given how frequently that library is referenced, I would say that the JVM world does not have great video support.</p>
 
-<p>I reengaged a few weeks later when I attended a <a href="http://www.meetup.com/San-Francisco-MongoDB-User-Group/events/220789385/">fascinating talk about Mongo version 3.0</a> that touched on details about the inner workings of databases and distributed computing. From there, I connected with a Kerberos expert at Mongo who was willing to provide back-and-forth email support until I succeeded.</p>
+<p>I managed to create an MP4 from egraph assets, and those MP4s were what I shipped out the door. Currently, the egraph page displays the MP4 with flash fallback provided by <a href="http://www.videojs.com/">Video JS (Zencoder)</a> in a single resolution. We shipped it because, judging from the browsers they use, a very small percentage of our users would not be able to play the video, and besides our beautiful classic egraph view is still available. But if time and money were unlimited, video encoding is clearly a project we can spend more time on.</p>
 
-<p>There were two major issues. The first, which had to do with logging into a Kerberos-enabled Mongo from a command line, ended up being a case where the documented example showed an incorrect approach. The second major hurdle encountered was that the Paxata application would not connect to that same database. The issue here ended up being... drumroll... quotations (&quot;yes&quot; &quot;these&quot; &quot;things&quot;) around some <a href="https://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service">JAAS configs</a>. Amount of illustrative documentation on the internet = zero.</p>
+<p>Complexity in video encoding is introduced on one axis by the competing video formats, on a second axis by the wide range of viewing devices that span iPhones, Android phones, browsers, tablets, and TVs, and on a third axis by the speed of the viewing device’s internet connection. Did you know that <a href="https://gigaom.com/2012/12/18/netflix-encoding/">Netflix encodes each video 120 times</a> so that you can watch <a href="http://www.amazon.com/Archer-Season-H-Jon-Benjamin/dp/B00475B0G2">Archer</a> wherever you want? And the next time I upload an arbitrary video to Youtube, I will admire the fact that it just works. For the rest of us who are not large tech companies, there are services like Zencoder and now Amazon Elastic Transcoder. I tip my hat to Zencoder for being ahead of the curve in recognizing the need for sophisticated video encoding services.</p>
 
-<p>So we can release a product to on-prem customers with confidence that they can use it with Kerberos-protected Mongo databases. I will prepare some documentation on how to set this up end-to-end.</p>
+<p>When <a href="https://aws.amazon.com/blogs/aws/amazon-elastic-transcoder/">AWS introduced their service</a>, they described that: ”Implementing a transcoding system on your own can be fairly complex. You might need to use a combination of open source and commercial code, and you’ll need to deal with scaling and storage…. In short, it isn’t as easy as it could be.” That sounds about right to me. :-)</p>
 
-<p>And maybe someday I can get back to work that looks more like computer science. :)</p>
+<p>But the deeper you explore hard problems, the more obvious business opportunities seem.</p>
 
 </div>
 

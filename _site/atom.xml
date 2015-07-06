@@ -4,7 +4,7 @@
  <title>will chan's random blog</title>
  <link href="http://http://williamchan.github.io//atom.xml" rel="self"/>
  <link href="http://http://williamchan.github.io//"/>
- <updated>2015-07-05T10:17:14-07:00</updated>
+ <updated>2015-07-06T00:35:07-07:00</updated>
  <id>http://http://williamchan.github.io/</id>
  <author>
    <name>Will Chan</name>
@@ -142,7 +142,7 @@
  </entry>
  
  <entry>
-   <title>Mongo+Kerberos - documentation matters</title>
+   <title>Mongo+Kerberos -- documentation matters</title>
    <link href="http://http://williamchan.github.io//2015/04/20/mongo-kerberos-documentation-matters/"/>
    <updated>2015-04-20T00:00:00-07:00</updated>
    <id>http://http://williamchan.github.io//2015/04/20/mongo-kerberos-documentation-matters</id>
@@ -161,6 +161,298 @@
 &lt;p&gt;So we can release a product to on-prem customers with confidence that they can use it with Kerberos-protected Mongo databases. I will prepare some documentation on how to set this up end-to-end.&lt;/p&gt;
 
 &lt;p&gt;And maybe someday I can get back to work that looks more like computer science. :)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The code behind Pinterest's beautiful layout</title>
+   <link href="http://http://williamchan.github.io//2013/07/17/pinterests-beautiful-layout/"/>
+   <updated>2013-07-17T00:00:00-07:00</updated>
+   <id>http://http://williamchan.github.io//2013/07/17/pinterests-beautiful-layout</id>
+   <content type="html">&lt;p&gt;I love the Pinterest layout, the way each pin finds its perfect spot in nice neat columns on your board. I mean, just look at this!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pinterest-layout-example.jpg&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;I was quite curious to see how they do this because, in html/css, it is easy to organize elements horizontally and more of a feat to do anything else. So I decided to take a look at their code.&lt;/p&gt;
+
+&lt;p&gt;In case you wish to follow along in the code, I have prepared trimmed-down versions of the html and css, which are easier to understand. &lt;a href=&quot;https://github.com/williamchan/pinterest-layout-exploration&quot;&gt;You can find them here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The first important ingredient of this layout is the div containing all of the pins:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;variableHeightLayout ... GridItems ...&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;height: 4665px;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  ... items/pins ...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In particular, there is a style called .GridItems.variableHeightLayout&amp;gt;.item that grants the rule &amp;quot;position: absolute;&amp;quot; to each grid item.&lt;/p&gt;
+
+&lt;p&gt;Inside this containing div are all of the pins, also known as grid items.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;height: 4665px;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 0px; left: 0px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 0px; left: 250px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 0px; left: 500px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 0px; left: 750px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 0px; left: 1000px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 238px; left: 0px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 324px; left: 500px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 362px; left: 250px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 431px; left: 750px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 622px; left: 1000px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;top: 643px; left: 500px; visibility: visible;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ... &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note how each item has an inline style.&lt;/p&gt;
+
+&lt;p&gt;Both &amp;quot;left&amp;quot; and &amp;quot;top&amp;quot; are calculated individually for each pin. The &amp;quot;left&amp;quot; values are 0px, 250px, 500px, 750px, or 1000px, which is how 5 columns are laid out here. All pins, and hence each column, are constrained to 236px by the &amp;quot;.Pin.summary .pinWrapper&amp;quot; syle. The &amp;quot;top&amp;quot; values are calculated for each based on the pins above it. And this all works because of &amp;quot;position: absolute;&amp;quot; as inherited from the containing div.&lt;/p&gt;
+
+&lt;p&gt;While inline styles are generally discouraged, I must say this is quite a clever usage.&lt;/p&gt;
+
+&lt;p&gt;As for how &amp;quot;top&amp;quot; and &amp;quot;left&amp;quot; for each pin are calculated, that is controlled by the accompanying JS. That script runs every time a pinterest page is loaded, when additional pins are loaded, and when the window is resized (pinterest pages are adaptive and will lay out between 3 and 10 columns based on the width of your browser).&lt;/p&gt;
+
+&lt;p&gt;That script can be read if downloaded and unminified. Search for code that looks like &amp;quot;left=&amp;quot; and &amp;quot;top=&amp;quot;. I am going to end my exploration here because it&amp;#39;s a lot of JS. And besides, &lt;a href=&quot;http://www.quora.com/What-technology-is-used-to-generate-pinterest-coms-absolute-div-stacking-layout&quot;&gt;Pinterest employees kindly summarize that script here on Quora&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>A rear view of my Egraphs experience</title>
+   <link href="http://http://williamchan.github.io//2013/06/11/rear-view-of-my-egraphs-experience/"/>
+   <updated>2013-06-11T00:00:00-07:00</updated>
+   <id>http://http://williamchan.github.io//2013/06/11/rear-view-of-my-egraphs-experience</id>
+   <content type="html">&lt;p&gt;It’s been over a month since we &lt;a href=&quot;http://www.insidesocal.com/tomhoffarth/2013/05/02/why-egraphs-finally-had-to-sign-off/&quot;&gt;shuttered Egraphs&lt;/a&gt;. I waited a while before writing to give myself some distance, since the last months of Egraphs were often quite painful as we weighed whether and how to end the company and how to navigate when the end seemed near.&lt;/p&gt;
+
+&lt;p&gt;I have a lot of warm memories about this period in my life. I recall that, before launch, we worried over whether we would sell a single Egraph to someone not related to us. And to be honest, up until then had I felt like we were building a toy. I found it extremely gratifying once we saw how meaningful it was that our customers could interact with their heroes and that they did so using our service. In the words of Tony Hsieh, we were in the business of &lt;a href=&quot;http://www.amazon.com/Delivering-Happiness-Profits-Passion-Purpose/dp/160941280X&quot;&gt;delivering happiness&lt;/a&gt;, and our company was about delivering happiness to both our customers and to ourselves. We didn’t do things perfectly, but I would give ourselves passing grades and no regrets.&lt;/p&gt;
+
+&lt;p&gt;You learn a lot the first time you start a company. Of course, I gained a lot of coding experience from developing a website from scratch while working full-stack. I learned Scala, the language we chose for the server codebase. I also learned about hiring and building a company culture and about iterating — the sort of stuff that is often discussed at startup speaking events. (By the way, &lt;a href=&quot;http://gettingreal.37signals.com/&quot;&gt;Getting Real&lt;/a&gt;, a book on product management by 37signals, is a really great read for anyone building a company or product.)&lt;/p&gt;
+
+&lt;p&gt;I also learned things that I don’t ever recall being discussed at startup events. The most important lesson has to do with, what is the proper relationship between founders and their board? In the context of a startup, a board’s first priority may be toward their investment, whereas the founder’s priority is to the success of the company. This is a subtle but potentially substantial difference. Company management needs to do what it takes to make the company successful and not just what the board wants them to do. I wouldn’t be surprised if many first-time entrepreneurs don’t realize this at the beginning of their startup journeys. I think it takes experience and it definitely takes confidence.&lt;/p&gt;
+
+&lt;p&gt;Finally, I want the next company I found to be one that I want to devote a career to. Entrepreneurship is hard and rough patches should be expected. When the going gets tough, I want a sense of mission to carry me through those rough patches. “Work on what you’re passionate about” is advice that is often passed around the startup community, and I believe it even more now to a degree that would not have been possible before my Egraphs experience.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Simple Scala habits saved us on launch</title>
+   <link href="http://http://williamchan.github.io//2013/03/04/simple-scala-habits-saved-us-on-launch/"/>
+   <updated>2013-03-04T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/03/04/simple-scala-habits-saved-us-on-launch</id>
+   <content type="html">&lt;p&gt;Months after it happened, the launch of Egraphs still feels like a blur. There was the crazy rush to finish the site in the weeks leading up, publishing the site from Tropicana Field as the Rays played the Red Sox, and watching baseball fans show up and actually start spending money.&lt;/p&gt;
+
+&lt;p&gt;I would have preferred to avoid any development death marches, but we were committed to July 12 because we were working with external partners including the MLB, the Rays, and an initial lineup of celebrity partners including David Ortiz and Pedro Martinez. How many startups out can say that they have so much support on day one?&lt;/p&gt;
+
+&lt;p&gt;One thing that naturally occurred is that we stopped writing tests in the six weeks leading up to launch. It’s not something I’m proud of, but amazingly the site didn’t croak when customers started using it. We saw zero null pointer exceptions and very few logic bugs, and I attribute that to easy Scala habits we adopted to great effect.&lt;/p&gt;
+
+&lt;p&gt;For example, to achieve null-safety, we avoided calling Option.get like the plague. Scala allows you to access objects that might or might have been instantiated with map, or match, or for-comprehension. That one habit is responsible for the rarity of NPEs for us.&lt;/p&gt;
+
+&lt;p&gt;Secondly, we relied on type-safety as much as possible. If branching on the state of something to determine which logic path to execute, we got specific with types. It’s a beautiful thing to be able to write a lot of code and feel confident that if it compiles, then it likely works.&lt;/p&gt;
+
+&lt;p&gt;(Code examples of these simple Scala habits can be found in &lt;a href=&quot;http://www.slideshare.net/willchan83/scala-at-egraphs-sept-2012&quot;&gt;this presentation&lt;/a&gt;.)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Building Faceted Search With PostgreSQL</title>
+   <link href="http://http://williamchan.github.io//2013/03/04/building-faceted-search-with-postgresql/"/>
+   <updated>2013-03-04T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/03/04/building-faceted-search-with-postgresql</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;https://web.archive.org/web/20130318235943/http://tech.pro/tutorial/1142/building-faceted-search-with-postgresql&quot;&gt;Siggy wrote a great post about how he built our fully-functional marketplace&lt;/a&gt;. It’s pretty cool how quickly things can come together with just one engineer making good decisions and using cool technologies.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Controller filters in Play and Scala</title>
+   <link href="http://http://williamchan.github.io//2013/03/02/controller-filters-in-play-and-scala/"/>
+   <updated>2013-03-02T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/03/02/controller-filters-in-play-and-scala</id>
+   <content type="html">&lt;p&gt;We were chilling with other students enrolled in the coursera Scala class wondering aloud why one would ever use &lt;a href=&quot;https://en.wikipedia.org/wiki/Currying&quot;&gt;currying&lt;/a&gt;. Admittedly, the ability to organize parameter lists for your functions feels somewhat academic, but we have managed to use function currying in ways that we’re really happy with.&lt;/p&gt;
+
+&lt;p&gt;In our web app, we have many controllers that respond to different kinds of requests. Some of those controllers respond to simple GET requests that are not expected to alter state on the server. Some respond to POST requests that are expected to change state and also check CSRF tokens. And some other controllers respond to POST requests to Api endpoints for which CSRF tokens are not relevant.&lt;/p&gt;
+
+&lt;p&gt;We have a class called ControllerMethod that is flexible enough to handle these general types of requests whether GET or POST or Api POST, and yet can be tailored with the specific logic that should execute for that route.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ControllerMethod&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dbSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ControllerDBSettings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WithoutDBConnection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;dbSettings&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WithoutDBConnection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;other&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cases&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Treating ControllerMethod as a “root method” for controllers, we can use it to streamline our controllers like, for example, the one that returns an egraph:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getEgraph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;controllerMethod&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;Action&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;implicit&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;egraphStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;findFulfilledEgraph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;egraph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderEgraphPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;egraph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;NotFound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;No Egraph found&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This simple pattern eliminates tons of boilerplate code that would otherwise need to be written into each controller. Moreover, the POST controller that handles changes applied to an egraph uses a slightly modified version of controllerMethod. So with minimal variation in code, we treat the POST controller with functionality that you would expect to have, such as a writable database context and protected against CSRF attacks.&lt;/p&gt;
+
+&lt;p&gt;Currying is not a technique I envisioned using much when I was first introduced to it. But as we matured as Scala devs and left old Java habits behind, we have used this technique to write dozens of controllers (and other classes) across our web app. Based on experience, currying has proven to be an extremely powerful pattern for bringing organizational sanity to our codebase. =)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Learning like a 5yo about managing servers</title>
+   <link href="http://http://williamchan.github.io//2013/03/01/learning-managing-servers/"/>
+   <updated>2013-03-01T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/03/01/learning-managing-servers</id>
+   <content type="html">&lt;p&gt;I think writing software is fun. Less fun is stressing out when the servers running your code crap out. As tech teams go, my compatriots and I are more app developers than tech ops/dev ops/whatever. Our first several months of running a site were more eventful than I was hoping.&lt;/p&gt;
+
+&lt;p&gt;First, there was a &lt;a href=&quot;http://aws.amazon.com/message/67457/&quot;&gt;huge AWS outage in June&lt;/a&gt; that took out both our app servers and our database servers several days before our launch date. On our launch date, we roundhouse kicked our own site when we reacted to high traffic by spinning up too many app servers and &lt;a href=&quot;http://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS&quot;&gt;accidentally overloading the number of available database connections&lt;/a&gt;... we now know better. Excitement of this sort continued for a few months as we continued to have site issues almost every week.&lt;/p&gt;
+
+&lt;p&gt;A few doozies were particularly memorable.&lt;/p&gt;
+
+&lt;p&gt;One night during what should have been a routine deployment, I ran an upgrade script to change the database from version 23 to 24. Then I tried to deploy new app code, but the app servers failed to start because of inconsistent database version, and that was a non-starter for a website built on the Play 1.2 framework. That’s funny, how could that possibly be? I double-checked that the database schema was the correct version, and yet the app servers failed to start several more times. Meanwhile, our site is down and I start to hyperventilate because I feel crazy. I down a bottle of pinot noir to stave off a heart attack. Eventually, I noticed that the database’s load balancer incorrectly reported version 23 while the database itself was on version 24.&lt;/p&gt;
+
+&lt;p&gt;So replication was broken!! &lt;a href=&quot;http://www.pgpool.net/mediawiki/index.php/Main_Page&quot;&gt;Our database load balancer&lt;/a&gt; diverts many SELECT queries to the replica, which was still a version behind, and that incorrect version was what the application read. To fix the site, I pointed the application directly at the master database instead of at the load balancer, thereby cutting the replica out of the picture. And we ran our site directly on the master database for the next few days until we fixed replication. The whole ordeal probably lasted less than an hour, but time slows down to make it feel much longer. I swore to never write non-backward-compatible schema changes no matter how trivial a column rename feels, and to always keep a bottle of pinot on hand.&lt;/p&gt;
+
+&lt;p&gt;Doozy #2 is a story from a day when MLB sent emails to millions of baseball fans on our behalf. It was to be our highest traffic day yet, and &lt;a href=&quot;http://developer-blog.cloudbees.com/2013/01/play-framwork-our-most-popular.html&quot;&gt;it went a bit like this&lt;/a&gt; except that our site was much less prepared. In the earlier part of the day some visitors to our site were experiencing half-minute page loads omgz =(. It turned out that a CSS styles file was often taking a long time to download even though we had just started using &lt;a href=&quot;http://aws.amazon.com/cloudfront/&quot;&gt;Amazon’s Cloudfront CDN&lt;/a&gt; to serve that file, implying that Cloudfront was making roundtrips to the application server. We increased the cache period of that asset on Cloudfront, and that little change got our site back to loading pages within a second even under load! Actually it was our friends at &lt;a href=&quot;https://www.cloudbees.com/&quot;&gt;CloudBees&lt;/a&gt;, our app server PaaS vendor, who made that observation.&lt;/p&gt;
+
+&lt;p&gt;And there are more stories like that chronicled in wiki pages that we write about each site incident.&lt;/p&gt;
+
+&lt;p&gt;Learning occurred, to say the least. But probably the most valuable thing I learned was not any technical kernel of knowledge but rather how to not freak out about site issues. They’re going to happen when you run a web business. The key is to chill out and use them as training moments, especially while our site is still young.&lt;/p&gt;
+
+&lt;p&gt;Despite all of this, I’ve calculated out that we maintained &amp;gt;99.98% uptime. Not bad for a few app developers, if I do say so myself.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Learning like a 5yo about https requests</title>
+   <link href="http://http://williamchan.github.io//2013/03/01/learning-https-requests/"/>
+   <updated>2013-03-01T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/03/01/learning-https-requests</id>
+   <content type="html">&lt;p&gt;Because we value the security of our customers’ and celebrities’ data, we decided early on that both outbound and inbound requests would be served over SSL.&lt;/p&gt;
+
+&lt;p&gt;To configure SSL for a site, your DNS and web hosting vendors likely have clear instructions to follow. As for connecting to third-party services via HTTPS, I often felt incredulous that I didn’t come across any good and comprehensive guides online when I was figuring this stuff out, which is a bit weird since this must be a common task for many online companies. Like much of my recently acquired tech ops knowledge, I feel like each nugget of learning was hard-won, and I wish to share what I know here.&lt;/p&gt;
+
+&lt;p&gt;To make requests via HTTPS, your app needs a &lt;strong&gt;truststore&lt;/strong&gt; that contains &lt;strong&gt;certificates&lt;/strong&gt; from the parties that you expect to communicate with or from Certificate Authorities that you trust to identify other parties. There is also another concept called a keystore that contains private keys supposedly for implementing server-side SSL. Now, already things can get confusing. I got those definitions from &lt;a href=&quot;http://stackoverflow.com/questions/318441/truststore-and-keystore-definitions&quot;&gt;this stackoverflow discussion that says that truststore and keystore are different concepts&lt;/a&gt;, and yet it really seems that truststore and keystore are used interchangeably. I’ve come to the conclusion to not allow this ambiguity to ruin my life.&lt;/p&gt;
+
+&lt;h2&gt;Download certificates&lt;/h2&gt;
+
+&lt;p&gt;The first step is to download certificates from the sites and services with which your server will communicate via HTTPS. For example, visit &lt;a href=&quot;https://api.stripe.com&quot;&gt;https://api.stripe.com&lt;/a&gt; using Chrome, click the lock icon in the browser bar, and look for “Certificate Information.” You should see a certificate tree that looks something like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/certificate-tree-example.jpg&quot;/&gt; &lt;/p&gt;
+
+&lt;p&gt;Each of those is a certificate with its own expiration date. Root-level certificates usually have expiration dates farthest in the future, whereas leaf certificates expire more frequently.&lt;/p&gt;
+
+&lt;p&gt;I recommend downloading all of the available certificates so that they can be imported into the keystore. You don’t want to have your app’s communication with crucial services broken without warning because a leaf certificate expired or was replaced. Ahem, yes, I learned that by experience.&lt;/p&gt;
+
+&lt;h2&gt;Import certificates into truststore&lt;/h2&gt;
+
+&lt;p&gt;In a Scala/Java environment, the javax.net.ssl.trustStore system property will need to point to a keystore that includes the certificates of trusted third-party sites. (See? Very interchangeable.)&lt;/p&gt;
+
+&lt;p&gt;To prepare the truststore, you can run a command that looks like:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;keytool -import -alias stripe.com -file api.stripe.com.cer -keystore keystore&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Do this on each certificate you want to import. There are plenty of &lt;a href=&quot;http://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html&quot;&gt;resources out there on keytool commands&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then fire up your app and you should be to communicate securely with APIs all over the interwebs!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>iPad app distribution for the stars</title>
+   <link href="http://http://williamchan.github.io//2013/02/28/ipad-app-distribution-for-the-stars/"/>
+   <updated>2013-02-28T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/02/28/ipad-app-distribution-for-the-stars</id>
+   <content type="html">&lt;p&gt;Celebrities on Egraphs use a &lt;a href=&quot;https://www.youtube.com/watch?v=BfU_cE6HxDw&quot;&gt;special iPad app to connect with their fans&lt;/a&gt;. We didn’t want to put this app on the Apple app store because it is not meant for general usage, and also because we wanted to distribute upgrades without going through Apple. For us, security is crucial because much of the value of an egraph is its authenticity.&lt;/p&gt;
+
+&lt;p&gt;The recipe is actually quite simple.&lt;/p&gt;
+
+&lt;p&gt;Step 1 is initial distribution via email: To get the initial app to the iPad, we send an email to the celebrity with a link that installs the the initial version using the itms-services protocol.&lt;/p&gt;
+
+&lt;p&gt;Step 2 is to install the actual app via authenticated requests: When the celebrity logs into the initial app with a pre-provisioned account and password, that kicks off the process to download the actual app. The iPad makes a request to an egraphs.com server to get the locations of the .plist and .ipa files of the latest Egraphs iPad app. The .ipa lives privately on Amazon’s S3 and is only accessible through a &lt;a href=&quot;http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html&quot;&gt;short-lived authenticated REST request generated by the server&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Step 3 is to enable easy app upgrades: To distribute updates of the Egraphs ipad app, we just update the .ipa URL on our servers. The next time a celebrity user logs into he iPad app, step 2 will kick off again and encourage the celebrity to allow the upgrade.&lt;/p&gt;
+
+&lt;p&gt;The problem of controlling distribution to iPad apps actually reminds me of what enterprises do with custom Box apps (I used to work at Box). I like to describe our iPad app distribution system as an enterprise-grade solution for your favorite celebrities.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>On starting up in Seattle</title>
+   <link href="http://http://williamchan.github.io//2013/02/26/on-starting-up-in-seattle/"/>
+   <updated>2013-02-26T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/02/26/on-starting-up-in-seattle</id>
+   <content type="html">&lt;p&gt;I’ve been living in Seattle for a year and a half now. Does that qualify me to talk about the Seattle startup scene? Let’s find out together.&lt;/p&gt;
+
+&lt;p&gt;Four of the five cofounders moved from the SF Bay Area to start Egraphs in a Seattle house, where I learned that the Central District is cheap and has &lt;a href=&quot;http://www.yelp.com/search?find_desc=ethiopian+restaurant&amp;amp;find_loc=Seattle%2C+WA&amp;amp;ns=1#find_loc=Central+District,+Seattle,+WA&amp;amp;l=p:WA:Seattle::%5BCentral_District,Madrona/Leschi%5D&quot;&gt;great Ethiopian food&lt;/a&gt;. It may seem strange that we left San Francisco and Palo Alto to start a company, and around the same time my former CEO even &lt;a href=&quot;http://www.geekwire.com/2011/leave-seattle-build-boxnet/&quot;&gt;wrote about how he had to leave Seattle to get started in 2005&lt;/a&gt;. But Seattle was a new city for us and a new adventure, and it has worked out pretty well.&lt;/p&gt;
+
+&lt;p&gt;For one, it is way cheaper to run a business in Seattle. We have very roughly estimated that it would have cost twice as much to operate in San Francisco due to higher business expenses and taxes and rents and salaries. For example, we now have an office in &lt;a href=&quot;http://www.geekwire.com/2013/pioneer-square-tech-map-techies-hanging-shingles/&quot;&gt;Pioneer Square, which has a high concentration of startups&lt;/a&gt;, and the rent we pay would get us an office one-fourth the size in Palo Alto. For comparing other expenses, just plug in higher numbers across the board for operating in SF. We have essentially been able to run lean since we started.&lt;/p&gt;
+
+&lt;p&gt;When I started checking out the local tech scene, I was pleasantly surprised to find a thriving startup community. The monthly &lt;a href=&quot;http://www.meetup.com/HackerNewsSeattleMeetup/&quot;&gt;Seattle Hacker News meetup&lt;/a&gt; is regularly attended by 100+ industry folks, and many of them run their own startups. I remember chatting in a circle of attendees and finding that every person in that group was running something. Predictably, none of them were interested in joining Egraphs, and also predictably many of them had previous experience at Microsoft and Amazon. At other events, I was thankful to find people to give me a crash course on AWS topics. The scene is not quite as bustling as the Bay Area, where you can completely book your schedule with industry shindigs if you really wanted to, but you can definitely find startup types to socialize with in Seattle.&lt;/p&gt;
+
+&lt;p&gt;With respect to engineering recruiting, we have had good fortune to find some awesome engineers to join our team. We didn’t find any of them through the traditional avenues of online job postings (though I did learn that Resumator is a cinch to use), nor did we find them through meetups or campus recruiting. We met them in informal social settings, and one we met through a study group we hosted for Martin Odersky’s coursera class on Scala. The beautiful thing about startup recruiting in Seattle is the deep reserve of engineering talent quietly languishing at Microsoft and Amazon, waiting for a greater purpose. But they’re probably not exploring the startup scene, so you need to do the legwork to connect with them on a meaningful level. If I needed to recruit more engineers right now, I would get a rock climbing membership and socialize regularly at &lt;a href=&quot;http://seattle.beerandcode.org/&quot;&gt;Beer and Code&lt;/a&gt; and host house parties to extend my social circle. And then pitch them on the cool stuff we’re working on.&lt;/p&gt;
+
+&lt;p&gt;It certainly would have been a different experience starting in the Bay Area versus Seattle, but I’ll shy away from saying which is better. Between two workable environments, it really isn’t meaningful to make statements like “City A is better than City B” anyway. Starting in Seattle is definitely possible, and moreover this town has been good to us. Beyond that, location is mostly a matter of personal preferences.&lt;/p&gt;
+
+&lt;p&gt;As a postscript, I will say that I was completely caught off guard by winter blues. Again, personal preferences.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Like geometers in the time of Euclid</title>
+   <link href="http://http://williamchan.github.io//2013/02/26/geometers-in-the-time-of-euclid/"/>
+   <updated>2013-02-26T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/02/26/geometers-in-the-time-of-euclid</id>
+   <content type="html">&lt;p&gt;I just came across this video of my computer science lecturer.&lt;/p&gt;
+
+&lt;iframe width=&quot;420&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/nWRGPxSNnag&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;“You are like geometers and you’re living in the time of Euclid.”&lt;/p&gt;
+
+&lt;p&gt;He said the same thing to conclude the final lecture when I took this class in winter 2005, and the big picture of why we study this stuff just clicked for me. I do believe that Mehran Sahami has influenced &lt;em&gt;generations&lt;/em&gt; of Stanford students.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Free ObamaCare startup idea</title>
+   <link href="http://http://williamchan.github.io//2013/02/26/free-obamacare-startup-idea/"/>
+   <updated>2013-02-26T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/02/26/free-obamacare-startup-idea</id>
+   <content type="html">&lt;p&gt;The way to think of startup ideas is not to think of startup ideas but rather to look for problems. &lt;a href=&quot;http://www.paulgraham.com/startupideas.html&quot;&gt;So says Paul Graham&lt;/a&gt;. If you can provide a focused solution to a high-pain problem shared by many, then you have yourself a business.&lt;/p&gt;
+
+&lt;p&gt;For example, &lt;a href=&quot;https://stripe.com/&quot;&gt;Stripe&lt;/a&gt; does that for the many websites that want to accept credit card payments without the hassle of merchant accounts or PCI compliance. &lt;a href=&quot;https://papertrailapp.com/&quot;&gt;Papertrail&lt;/a&gt; does that for sites who want to be able to make sense of application server log statements and exceptions. &lt;a href=&quot;https://try.crashlytics.com/&quot;&gt;Crashlytics&lt;/a&gt; filled a critical need for mobile developers who otherwise had limited view of how their apps fared in the hands of actual users.&lt;/p&gt;
+
+&lt;p&gt;A friend of mine was reading a book called &lt;a href=&quot;http://www.amazon.com/ObamaCare-Survival-Guide-Nick-Tate/dp/0893348627&quot;&gt;ObamaCare Survival Guide&lt;/a&gt; and had all but given up trying to understand ObamaCare compliance. The trouble is that there are lots of small businesses out there who don’t have that luxury. Think restaurants. Think small contracting firms. The owners of these companies are busy people who now have many new rules to follow, and those rules are complex and differ state-to-state and sometimes by city (eg San Francisco’s Health Care Security Ordinance). Oh yeah, and expect that those rules will be changed by Congress at some point.&lt;/p&gt;
+
+&lt;p&gt;So, create a service that handles everything small businesses need to comply with employee healthcare laws. As a user, I would want to be able to enter in my business address and info about my employees, and this service would take care of the rest down to recordkeeping and sending payments and forms where they need to go.&lt;/p&gt;
+
+&lt;p&gt;This one’s for free, along with the zero hard research that’s gone into it. In fact, from now on, whenever you hear about a survival guide for anything, &lt;a href=&quot;http://www.amazon.com/Zombie-Survival-Guide-Complete-Protection/dp/1400049628&quot;&gt;just assume that there is a business idea&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The brave world of video encoding</title>
+   <link href="http://http://williamchan.github.io//2013/02/25/brave-world-of-video-encoding/"/>
+   <updated>2013-02-25T00:00:00-08:00</updated>
+   <id>http://http://williamchan.github.io//2013/02/25/brave-world-of-video-encoding</id>
+   <content type="html">&lt;p&gt;One of my recent projects was to build the new egraph page. As explained in a company blog post, the new format delivers the egraph’s audio and image together as a video, versus as separate image and audio assets.&lt;/p&gt;
+
+&lt;p&gt;Much of the motivation for this exploration was that we figured out that many people who viewed egraphs completely missed that there is an audio experience. By presenting the egraph as a video with a BAPB (big ass play button), we hope that it is obvious to egraph viewers that there is something to experience by hitting the play button. Hear your star speak directly to you omgz.&lt;/p&gt;
+
+&lt;p&gt;Enter the brave world of video encoding. As this as my first foray into that world, I was in for a crash source. For starters, there are currently three major codecs. As &lt;a href=&quot;http://diveintohtml5.info/video.html&quot;&gt;Dive Into Html 5&lt;/a&gt; recommends for maximum compatibility, a website should provide a video in all three formats as well as a flash fallback. So much for hoping that video would be a limited scope problem.&lt;/p&gt;
+
+&lt;p&gt;And secondly, even combining a single image with an audio track turned out to be more difficult than I initially anticipated. Major open-source video libraries like FFmpeg run on native code, and all of my encoding attempts involved using a Java library called Xuggle, which wraps FFmpeg. I found Xuggle to be extremely finicky, and given how frequently that library is referenced, I would say that the JVM world does not have great video support.&lt;/p&gt;
+
+&lt;p&gt;I managed to create an MP4 from egraph assets, and those MP4s were what I shipped out the door. Currently, the egraph page displays the MP4 with flash fallback provided by &lt;a href=&quot;http://www.videojs.com/&quot;&gt;Video JS (Zencoder)&lt;/a&gt; in a single resolution. We shipped it because, judging from the browsers they use, a very small percentage of our users would not be able to play the video, and besides our beautiful classic egraph view is still available. But if time and money were unlimited, video encoding is clearly a project we can spend more time on.&lt;/p&gt;
+
+&lt;p&gt;Complexity in video encoding is introduced on one axis by the competing video formats, on a second axis by the wide range of viewing devices that span iPhones, Android phones, browsers, tablets, and TVs, and on a third axis by the speed of the viewing device’s internet connection. Did you know that &lt;a href=&quot;https://gigaom.com/2012/12/18/netflix-encoding/&quot;&gt;Netflix encodes each video 120 times&lt;/a&gt; so that you can watch &lt;a href=&quot;http://www.amazon.com/Archer-Season-H-Jon-Benjamin/dp/B00475B0G2&quot;&gt;Archer&lt;/a&gt; wherever you want? And the next time I upload an arbitrary video to Youtube, I will admire the fact that it just works. For the rest of us who are not large tech companies, there are services like Zencoder and now Amazon Elastic Transcoder. I tip my hat to Zencoder for being ahead of the curve in recognizing the need for sophisticated video encoding services.&lt;/p&gt;
+
+&lt;p&gt;When &lt;a href=&quot;https://aws.amazon.com/blogs/aws/amazon-elastic-transcoder/&quot;&gt;AWS introduced their service&lt;/a&gt;, they described that: ”Implementing a transcoding system on your own can be fairly complex. You might need to use a combination of open source and commercial code, and you’ll need to deal with scaling and storage…. In short, it isn’t as easy as it could be.” That sounds about right to me. :-)&lt;/p&gt;
+
+&lt;p&gt;But the deeper you explore hard problems, the more obvious business opportunities seem.&lt;/p&gt;
 </content>
  </entry>
  

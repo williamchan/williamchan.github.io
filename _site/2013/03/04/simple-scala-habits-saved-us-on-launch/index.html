@@ -11,7 +11,7 @@
 
   <title>
     
-      404: Page not found &middot; will chan's random blog
+      Simple Scala habits saved us on launch &middot; will chan's random blog
     
   </title>
 
@@ -110,9 +110,55 @@
       </div>
 
       <div class="container content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
+        <div class="post">
+  <h1 class="post-title">Simple Scala habits saved us on launch</h1>
+  <span class="post-date">04 Mar 2013</span>
+  <p>Months after it happened, the launch of Egraphs still feels like a blur. There was the crazy rush to finish the site in the weeks leading up, publishing the site from Tropicana Field as the Rays played the Red Sox, and watching baseball fans show up and actually start spending money.</p>
+
+<p>I would have preferred to avoid any development death marches, but we were committed to July 12 because we were working with external partners including the MLB, the Rays, and an initial lineup of celebrity partners including David Ortiz and Pedro Martinez. How many startups out can say that they have so much support on day one?</p>
+
+<p>One thing that naturally occurred is that we stopped writing tests in the six weeks leading up to launch. It’s not something I’m proud of, but amazingly the site didn’t croak when customers started using it. We saw zero null pointer exceptions and very few logic bugs, and I attribute that to easy Scala habits we adopted to great effect.</p>
+
+<p>For example, to achieve null-safety, we avoided calling Option.get like the plague. Scala allows you to access objects that might or might have been instantiated with map, or match, or for-comprehension. That one habit is responsible for the rarity of NPEs for us.</p>
+
+<p>Secondly, we relied on type-safety as much as possible. If branching on the state of something to determine which logic path to execute, we got specific with types. It’s a beautiful thing to be able to write a lot of code and feel confident that if it compiles, then it likely works.</p>
+
+<p>(Code examples of these simple Scala habits can be found in <a href="http://www.slideshare.net/willchan83/scala-at-egraphs-sept-2012">this presentation</a>.)</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="//2015/07/05/dissecting-big-data/">
+            Dissecting the "big data" industry
+            <small>05 Jul 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="//2015/07/01/ditch-the-annual-review/">
+            Ditch the annual review
+            <small>01 Jul 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="//2015/06/16/elon-musk-biography/">
+            Elon Musk biography - on aggressive learning and a fantastic future
+            <small>16 Jun 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
 </div>
 
       </div>

@@ -11,7 +11,7 @@
 
   <title>
     
-      Mongo+Kerberos -- documentation matters &middot; will chan's random blog
+      Learning like a 5yo about https requests &middot; will chan's random blog
     
   </title>
 
@@ -111,23 +111,37 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Mongo+Kerberos -- documentation matters</h1>
-  <span class="post-date">20 Apr 2015</span>
-  <p>By far the most painful work project of this year has been connecting the Paxata application to a Kerberos-protected Mongo database. I have come to the conclusion that if Kerberos is involved, then prepare for suffering.</p>
+  <h1 class="post-title">Learning like a 5yo about https requests</h1>
+  <span class="post-date">01 Mar 2013</span>
+  <p>Because we value the security of our customers’ and celebrities’ data, we decided early on that both outbound and inbound requests would be served over SSL.</p>
 
-<p>I wish that the moral of this story was that I never give up on a technical challenge, but really I was saved by the patience of some really awesome people at Mongo. </p>
+<p>To configure SSL for a site, your DNS and web hosting vendors likely have clear instructions to follow. As for connecting to third-party services via HTTPS, I often felt incredulous that I didn’t come across any good and comprehensive guides online when I was figuring this stuff out, which is a bit weird since this must be a common task for many online companies. Like much of my recently acquired tech ops knowledge, I feel like each nugget of learning was hard-won, and I wish to share what I know here.</p>
 
-<p><a href="https://en.wikipedia.org/wiki/Kerberos_(protocol)">Kerberos</a> is an authentication protocol that uses private keys, aka shared secrets, to secure computing resources and services. Shared secrets are really great for securing things, but in many cases, securely distributing those secrets is a showstopper because of the risk that those secrets are unsecurely transmitted. In a Kerberos environment, a trusted administrator configures those shared secrets within a closed computer network. (Think VP of IT at a large corporation.)</p>
+<p>To make requests via HTTPS, your app needs a <strong>truststore</strong> that contains <strong>certificates</strong> from the parties that you expect to communicate with or from Certificate Authorities that you trust to identify other parties. There is also another concept called a keystore that contains private keys supposedly for implementing server-side SSL. Now, already things can get confusing. I got those definitions from <a href="http://stackoverflow.com/questions/318441/truststore-and-keystore-definitions">this stackoverflow discussion that says that truststore and keystore are different concepts</a>, and yet it really seems that truststore and keystore are used interchangeably. I’ve come to the conclusion to not allow this ambiguity to ruin my life.</p>
 
-<p>My devops coworker and I started work on this project by setting up a Mongo Enterprise server with a Kerberos client. Then the headwalling began as we tried unsuccessfully to connect to Kerberos-enabled Mongo from a command line. For 2-3 weeks, we double-checked the available documentation, puzzled over cryptic error messages, and exhaustively tested hypotheses. It wore me out to the point that I focused on other projects at work for a while.</p>
+<h2>Download certificates</h2>
 
-<p>I reengaged a few weeks later when I attended a <a href="http://www.meetup.com/San-Francisco-MongoDB-User-Group/events/220789385/">fascinating talk about Mongo version 3.0</a> that touched on details about the inner workings of databases and distributed computing. From there, I connected with a Kerberos expert at Mongo who was willing to provide back-and-forth email support until I succeeded.</p>
+<p>The first step is to download certificates from the sites and services with which your server will communicate via HTTPS. For example, visit <a href="https://api.stripe.com">https://api.stripe.com</a> using Chrome, click the lock icon in the browser bar, and look for “Certificate Information.” You should see a certificate tree that looks something like:</p>
 
-<p>There were two major issues. The first, which had to do with logging into a Kerberos-enabled Mongo from a command line, ended up being a case where the documented example showed an incorrect approach. The second major hurdle encountered was that the Paxata application would not connect to that same database. The issue here ended up being... drumroll... quotations (&quot;yes&quot; &quot;these&quot; &quot;things&quot;) around some <a href="https://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service">JAAS configs</a>. Amount of illustrative documentation on the internet = zero.</p>
+<p><img src="/assets/certificate-tree-example.jpg"/> </p>
 
-<p>So we can release a product to on-prem customers with confidence that they can use it with Kerberos-protected Mongo databases. I will prepare some documentation on how to set this up end-to-end.</p>
+<p>Each of those is a certificate with its own expiration date. Root-level certificates usually have expiration dates farthest in the future, whereas leaf certificates expire more frequently.</p>
 
-<p>And maybe someday I can get back to work that looks more like computer science. :)</p>
+<p>I recommend downloading all of the available certificates so that they can be imported into the keystore. You don’t want to have your app’s communication with crucial services broken without warning because a leaf certificate expired or was replaced. Ahem, yes, I learned that by experience.</p>
+
+<h2>Import certificates into truststore</h2>
+
+<p>In a Scala/Java environment, the javax.net.ssl.trustStore system property will need to point to a keystore that includes the certificates of trusted third-party sites. (See? Very interchangeable.)</p>
+
+<p>To prepare the truststore, you can run a command that looks like:</p>
+
+<blockquote>
+<p>keytool -import -alias stripe.com -file api.stripe.com.cer -keystore keystore</p>
+</blockquote>
+
+<p>Do this on each certificate you want to import. There are plenty of <a href="http://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html">resources out there on keytool commands</a>.</p>
+
+<p>Then fire up your app and you should be to communicate securely with APIs all over the interwebs!</p>
 
 </div>
 

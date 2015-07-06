@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mongo+Kerberos - documentation matters
+title: Mongo+Kerberos -- documentation matters
 ---
 
 By far the most painful work project of this year has been connecting the Paxata application to a Kerberos-protected Mongo database. I have come to the conclusion that if Kerberos is involved, then prepare for suffering.

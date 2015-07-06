@@ -11,7 +11,7 @@
 
   <title>
     
-      Mongo+Kerberos -- documentation matters &middot; will chan's random blog
+      A rear view of my Egraphs experience &middot; will chan's random blog
     
   </title>
 
@@ -111,23 +111,17 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Mongo+Kerberos -- documentation matters</h1>
-  <span class="post-date">20 Apr 2015</span>
-  <p>By far the most painful work project of this year has been connecting the Paxata application to a Kerberos-protected Mongo database. I have come to the conclusion that if Kerberos is involved, then prepare for suffering.</p>
+  <h1 class="post-title">A rear view of my Egraphs experience</h1>
+  <span class="post-date">11 Jun 2013</span>
+  <p>It’s been over a month since we <a href="http://www.insidesocal.com/tomhoffarth/2013/05/02/why-egraphs-finally-had-to-sign-off/">shuttered Egraphs</a>. I waited a while before writing to give myself some distance, since the last months of Egraphs were often quite painful as we weighed whether and how to end the company and how to navigate when the end seemed near.</p>
 
-<p>I wish that the moral of this story was that I never give up on a technical challenge, but really I was saved by the patience of some really awesome people at Mongo. </p>
+<p>I have a lot of warm memories about this period in my life. I recall that, before launch, we worried over whether we would sell a single Egraph to someone not related to us. And to be honest, up until then had I felt like we were building a toy. I found it extremely gratifying once we saw how meaningful it was that our customers could interact with their heroes and that they did so using our service. In the words of Tony Hsieh, we were in the business of <a href="http://www.amazon.com/Delivering-Happiness-Profits-Passion-Purpose/dp/160941280X">delivering happiness</a>, and our company was about delivering happiness to both our customers and to ourselves. We didn’t do things perfectly, but I would give ourselves passing grades and no regrets.</p>
 
-<p><a href="https://en.wikipedia.org/wiki/Kerberos_(protocol)">Kerberos</a> is an authentication protocol that uses private keys, aka shared secrets, to secure computing resources and services. Shared secrets are really great for securing things, but in many cases, securely distributing those secrets is a showstopper because of the risk that those secrets are unsecurely transmitted. In a Kerberos environment, a trusted administrator configures those shared secrets within a closed computer network. (Think VP of IT at a large corporation.)</p>
+<p>You learn a lot the first time you start a company. Of course, I gained a lot of coding experience from developing a website from scratch while working full-stack. I learned Scala, the language we chose for the server codebase. I also learned about hiring and building a company culture and about iterating — the sort of stuff that is often discussed at startup speaking events. (By the way, <a href="http://gettingreal.37signals.com/">Getting Real</a>, a book on product management by 37signals, is a really great read for anyone building a company or product.)</p>
 
-<p>My devops coworker and I started work on this project by setting up a Mongo Enterprise server with a Kerberos client. Then the headwalling began as we tried unsuccessfully to connect to Kerberos-enabled Mongo from a command line. For 2-3 weeks, we double-checked the available documentation, puzzled over cryptic error messages, and exhaustively tested hypotheses. It wore me out to the point that I focused on other projects at work for a while.</p>
+<p>I also learned things that I don’t ever recall being discussed at startup events. The most important lesson has to do with, what is the proper relationship between founders and their board? In the context of a startup, a board’s first priority may be toward their investment, whereas the founder’s priority is to the success of the company. This is a subtle but potentially substantial difference. Company management needs to do what it takes to make the company successful and not just what the board wants them to do. I wouldn’t be surprised if many first-time entrepreneurs don’t realize this at the beginning of their startup journeys. I think it takes experience and it definitely takes confidence.</p>
 
-<p>I reengaged a few weeks later when I attended a <a href="http://www.meetup.com/San-Francisco-MongoDB-User-Group/events/220789385/">fascinating talk about Mongo version 3.0</a> that touched on details about the inner workings of databases and distributed computing. From there, I connected with a Kerberos expert at Mongo who was willing to provide back-and-forth email support until I succeeded.</p>
-
-<p>There were two major issues. The first, which had to do with logging into a Kerberos-enabled Mongo from a command line, ended up being a case where the documented example showed an incorrect approach. The second major hurdle encountered was that the Paxata application would not connect to that same database. The issue here ended up being... drumroll... quotations (&quot;yes&quot; &quot;these&quot; &quot;things&quot;) around some <a href="https://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service">JAAS configs</a>. Amount of illustrative documentation on the internet = zero.</p>
-
-<p>So we can release a product to on-prem customers with confidence that they can use it with Kerberos-protected Mongo databases. I will prepare some documentation on how to set this up end-to-end.</p>
-
-<p>And maybe someday I can get back to work that looks more like computer science. :)</p>
+<p>Finally, I want the next company I found to be one that I want to devote a career to. Entrepreneurship is hard and rough patches should be expected. When the going gets tough, I want a sense of mission to carry me through those rough patches. “Work on what you’re passionate about” is advice that is often passed around the startup community, and I believe it even more now to a degree that would not have been possible before my Egraphs experience.</p>
 
 </div>
 
