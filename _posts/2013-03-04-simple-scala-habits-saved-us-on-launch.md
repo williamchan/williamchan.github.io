@@ -12,5 +12,3 @@ One thing that naturally occurred is that we stopped writing tests in the six we
 For example, to achieve null-safety, we avoided calling Option.get like the plague. Scala allows you to access objects that might or might have been instantiated with map, or match, or for-comprehension. That one habit is responsible for the rarity of NPEs for us.
 
 Secondly, we relied on type-safety as much as possible. If branching on the state of something to determine which logic path to execute, we got specific with types. It’s a beautiful thing to be able to write a lot of code and feel confident that if it compiles, then it likely works.
-
-(Code examples of these simple Scala habits can be found in [this presentation](http://www.slideshare.net/willchan83/scala-at-egraphs-sept-2012).)
