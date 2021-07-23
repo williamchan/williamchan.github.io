@@ -161,7 +161,7 @@ Enable 2FA (TOTP if possible) and remove phone number as 2FA method at...
 You likely have many passwords, so it is important to prioritize.
 
 As of Jan 2021, unfortunately it is the case that...
-* apple.com (retail site), BofA, Box, Chase, Square, Venmo, Wells Fargo only offer SMS-based 2FA.
+* apple.com (retail site), BofA, Chase, Square, Venmo, Wells Fargo only offer SMS-based 2FA.
 * Amazon requires your phone number as one 2FA method.
 
 ### Security preschool
