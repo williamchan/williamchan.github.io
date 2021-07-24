@@ -36,9 +36,11 @@ Do not cheap out. The best Medicare configuration is worth the ballpark $400/mon
 
 Many websites try to be fair and balanced about Original Medicare versus Medicare Advantage, like medicare.gov talking about [gym memberships](https://www.medicare.gov/what-medicare-covers/what-medicare-health-plans-cover/medicare-advantage-plans-cover-all-medicare-services), and [Healthline](https://www.healthline.com/health/medicare/medicare-part-c) and [AARP](https://www.aarp.org/health/medicare-insurance/info-2020/original-medicare-vs-advantage.html) and [eHealth](https://www.ehealthmedicare.com/medicare-advantage-articles/what-are-the-pros-and-cons-of-switching-to-a-medicare-advantage-plan) listing pros and cons. That’s all noise. Be opinionated and avoid letting a corporate middleman make your medical decisions.
 
-**How**: [The steps for getting Part A and Part B are well defined](https://www.medicare.gov/sign-up-change-plans/how-do-i-get-parts-a-b). The [Medicare website](https://www.medicare.gov/) can be used to shop for Medigap and Part D. I decided to use an agent ([calhealth.net](https://calhealth.net)). Health insurance is state-specific. If I were shopping for health insurance outside of California, I would search for one whose analysis of Medigap and Part D is similar to mine, and avoid the agents trying to sell Part C plans.
+**How**: [The steps for getting Part A and Part B are well defined](https://www.medicare.gov/sign-up-change-plans/how-do-i-get-parts-a-b). The [Medicare website](https://www.medicare.gov/) can be used to shop for Medigap and Part D. I decided to use an agent ([calhealth.net](https://calhealth.net)). Health insurance is state-specific. If I were shopping for health insurance outside of California, I would search for one whose analysis of Medicare and Medigap is similar to mine, and avoid the agents trying to sell Part C plans.
 
 **Tech help**: Assuming your seniors are not as internet-savvy as you are, help them create accounts on [ssa.gov](https://www.ssa.gov/) and [medicare.gov](https://www.medicare.gov/). It may be helpful to have those accounts ready to use.
+
+Also, help your seniors get their medical records by creating accounts with the hospitals they visit. If there are important scans (CT/MRI/X-ray/etc), you can request a CD-ROM of those scans in [DICOM file format](https://en.wikipedia.org/wiki/DICOM). These records are useful for seeing other doctors and switching hospitals.
 
 **If you receive a major diagnosis while on a Medicare Advantage**: Drop your Medicare Advantage plan and switch to Original Medicare.
 
@@ -50,9 +52,9 @@ Another option is to pay out-of-pocket for medical services until you can switch
 
 ### Picking health insurance from your employer (non-Medicare)
 
-Employers typically offer a mix of HMO and PPO options. Again, let’s be opinionated. Pick a PPO, avoid the HMOs. You care about your health and a HMO cares about finances, which is the very definition of misaligned incentives.
+Employers typically offer a mix of HMO and PPO options. Again, be opinionated. Avoid the HMOs and pick a great PPO. You care about your health and a HMO cares about finances, which is the very definition of misaligned incentives.
 
-To pick a good PPO, check the best hospitals in your region and see which employer-sponsored PPOs they accept. One view of the best hospitals is the list of [NCI-designated cancer centers](https://www.cancer.gov/research/infrastructure/cancer-centers/find). Another view is [US News rankings for cardiology](https://health.usnews.com/best-hospitals/rankings/cardiology-and-heart-surgery). In the SF Bay Area, the best hospitals are [Stanford Hospital](https://stanfordhealthcare.org/for-patients-visitors/health-insurance-plans.html) and [UCSF Medical Center](https://www.ucsfhealth.org/billing-and-insurance/health-insurance).
+To pick a great PPO, check the best hospitals in your region and see which employer-sponsored PPOs they accept. One view of the best hospitals is the list of [NCI-designated cancer centers](https://www.cancer.gov/research/infrastructure/cancer-centers/find). Another view is [US News rankings for cardiology](https://health.usnews.com/best-hospitals/rankings/cardiology-and-heart-surgery). In the SF Bay Area, the best hospitals are [Stanford Hospital](https://stanfordhealthcare.org/for-patients-visitors/health-insurance-plans.html) and [UCSF Medical Center](https://www.ucsfhealth.org/billing-and-insurance/health-insurance).
 
 <img style="margin-left: auto; margin-right: auto;" src="/assets/nci-map.png"/>
 
@@ -60,19 +62,19 @@ Pick the PPO that gives you access to all of the top hospitals near you. Note th
 
 ### Buying health insurance on your own (non-Medicare)
 
-The PPOs on Health Insurance Marketplace ([healthcare.gov](https://www.healthcare.gov/)) are not as good as employer-sponsored plans. Many hospitals list the employer-sponsored plans they accept and also the individual plans they accept, and the list of individual plans is usually shorter. For example, [Stanford Hospital](https://stanfordhealthcare.org/for-patients-visitors/health-insurance-plans.html) in 2021 accepts one PPO not sold on the Marketplace (one I do not like) and a few HMOs (which I refuse to be on).
+The PPOs on Health Insurance Marketplace ([healthcare.gov](https://www.healthcare.gov/)) are not as good as employer-sponsored plans. Many hospitals list the employer-sponsored plans they accept and also the individual plans they accept, and the list of individual plans is usually shorter. For example, [Stanford Hospital](https://stanfordhealthcare.org/for-patients-visitors/health-insurance-plans.html) in 2021 accepts one PPO that is not even sold on the Marketplace (one I do not like) and a few HMOs (and I refuse to be on an HMO).
 
 <img style="margin-left: auto; margin-right: auto; border: 1px solid lightgray" src="/assets/stanford-covered-california-plans.png"/>
 
 So, what to do?
 
-Because small group plans are considered employer-sponsored plans, they are accepted by more top hospitals, which makes small group plans better than what you can buy on the Marketplace. To buy a small group plan as an individual, you essentially have to setup a business and hire yourself as an employee (which means paying more taxes), and meet other requirements as set by the insurance company. I have seen requirements about having at least two employees who are not married to each other. Figuring this out is a situation in which a good health insurance agent can provide a lot of value.
+Because **small group** plans are employer-sponsored plans, they are accepted by more top hospitals, which makes them better than what you can buy on the Marketplace. To buy a small group plan as an individual, you essentially have to setup a business and hire yourself as an employee, and meet other requirements from insurance companies. I have seen requirements about having at least two employees who are not married to each other. Figuring this out is a situation in which a good health insurance agent can provide a lot of value.
 
 ### How bad can bad insurance be
 
 Thanks if you’re still reading. Hope this is helpful.
 
-I have personally seen [Optum](https://en.wikipedia.org/wiki/Optum) cancel two oncologist appointments in the same week without notifying the patient. In both cases, friendly customer-facing employees of Optum had booked the appointments, and those appointments were canceled by other employees whose names I never learned. Optum was the face of the Medicare Advantage HMO.
+I have personally seen [Optum](https://en.wikipedia.org/wiki/Optum) cancel two oncologist appointments within the same week without notifying the patient. In both cases, friendly customer-facing employees of Optum had booked the appointments, and those appointments were canceled by other employees whose names I never learned. Optum was the face of the Medicare Advantage HMO.
 
 I have a feeling that the best hospitals in the US are the best in the world, and that the average US hospitals are the worst of the developed world. I got to know an average US hospital, one that was assigned by the HMO. Doctors were mostly unreachable. An unhelpful pathology analysis basically said, “the tissue sample is a sample of tissue.” Nurses gave tips on how to deal with the HMO.
 
