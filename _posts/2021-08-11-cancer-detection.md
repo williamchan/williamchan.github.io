@@ -24,8 +24,8 @@ There is room for improvement from more data. The confidence intervals of the va
 
 A 88.7% accuracy on TOO allows for 11.3% chance of “dude where’s my cancer” because the actual TOO could be far from the predicted TOO. In the validation set:
 - a case of colorectal cancer was incorrectly predicted as breast.
-- 3 cases of anus cancer was incorrectly predicted as head and heck.
-- several cases of upper GI, sarcoma, liver/bile duct, head and heck, colorectal, and bladder/urothelial cancer were incorrectly predicted as lung.
+- 3 cases of anus cancer was incorrectly predicted as head and neck.
+- several cases of upper GI, sarcoma, liver/bile duct, head and neck, colorectal, and bladder/urothelial cancer were incorrectly predicted as lung.
 
 Unfortunately, TOO mispredictions are often not in an adjacent organ. A followup scan of the lungs will not surface a colorectal cancer. Because the number of data points for most cancer types is small, more data would at least improve the estimate of accuracy and maybe the actual [TOO predictor](https://www.annalsofoncology.org/cms/10.1016/j.annonc.2020.02.011/attachment/085d1b94-e2fa-490f-9beb-5dae150e2dd4/mmc3.pdf) as well.
 
